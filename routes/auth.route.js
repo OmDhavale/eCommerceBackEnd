@@ -14,5 +14,5 @@ module.exports = (app)=>{
      */
 
     //Route for Sign In
-    app.post("/ecomm/api/v1/auth/signin",authController.signin)
+    app.post("/ecomm/api/v1/auth/signin",[authMiddleware.verifySignInBody],authController.signin)
 }

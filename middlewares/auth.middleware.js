@@ -43,6 +43,24 @@ const verifySignUpBody = async (req,res,next)=>{
     }
     
 }
+
+
+const verifySignInBody = (req,res,next)=>{
+    //if user id not present 
+    if(!req.body.userID){
+        return res.status(400).send({
+            message : "User ID not provided !"
+        })
+    }
+    if(!req.body.password){
+        return res.status(400).send({
+            message : "Password not provided !"
+        })
+    }
+    next()
+}
+
 module.exports = {
-    verifySignUpBody : verifySignUpBody
+    verifySignUpBody : verifySignUpBody,
+    verifySignInBody : verifySignInBody
 }
