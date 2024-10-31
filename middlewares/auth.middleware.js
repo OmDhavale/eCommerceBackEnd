@@ -75,7 +75,7 @@ const verifyToken = (req,res,next)=>{
     jwt.verify(token,authConfig.secretString, async (err,decoded)=>{
         if(err){
             return res.status(401).send({
-                message : "Unauthorized"
+                message : "Unauthorized : Session token expired !"
             })
         }
         const user = await userModel.findOne({userID : decoded.id}) 
@@ -88,13 +88,27 @@ const verifyToken = (req,res,next)=>{
                 message : "User for this token doesnt exists !"
             })
         }
+        //set user info in request body
+        req.user = user
         //if valid then move to next
         next()
     })
     
 }
+const isAdminCheck = (req,res,next)=>{
+    const user = req.user
+    if(req.user && user.userType == "ADMIN"){
+        next()
+    }
+    else{
+        return res.status(403).send({
+            message: "FORBIDDEN : Only Admin is allowed to access this endpoint"
+        })
+    }
+}
 module.exports = {
     verifySignUpBody : verifySignUpBody,
     verifySignInBody : verifySignInBody,
-    verifyToken : verifyToken
+    verifyToken : verifyToken,
+    isAdminCheck : isAdminCheck
 }
