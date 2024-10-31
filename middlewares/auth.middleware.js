@@ -1,4 +1,6 @@
 const userModel = require("../models/user.model")
+const jwt = require("jsonwebtoken")
+const authConfig = require("../config/auth.config")
 /**
  * Create a middleware which checks if the request body is fine or not
  */
@@ -60,7 +62,39 @@ const verifySignInBody = (req,res,next)=>{
     next()
 }
 
+
+const verifyToken = (req,res,next)=>{
+    //Check if token is present in header
+    const token = req.headers['x-access-token']
+    if(!token){
+        return res.status(403).send({
+            message : "No token found : Unauthorised"
+        })
+    }
+    //check if its valid or not
+    jwt.verify(token,authConfig.secretString, async (err,decoded)=>{
+        if(err){
+            return res.status(401).send({
+                message : "Unauthorized"
+            })
+        }
+        const user = await userModel.findOne({userID : decoded.id}) 
+        /**
+         * remember we created token using userID, so after decoding token, we'll be
+         * getting userID only !, that we have to compare
+         */
+        if(user==null){
+            return res.status(400).send({
+                message : "User for this token doesnt exists !"
+            })
+        }
+        //if valid then move to next
+        next()
+    })
+    
+}
 module.exports = {
     verifySignUpBody : verifySignUpBody,
-    verifySignInBody : verifySignInBody
+    verifySignInBody : verifySignInBody,
+    verifyToken : verifyToken
 }
