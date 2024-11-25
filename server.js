@@ -7,11 +7,12 @@ const dbConfig = require("./config/db.config.js");
 const userModel = require("./models/user.model.js");
 const bcrypt = require("bcryptjs");
 app.use(express.json())
+require('dotenv').config();
 
 /*
 Create an Admin user if not present already at the beginning
 */
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGODB_URI)
 const db  = mongoose.connection
 db.on("error",()=>{
     console.log("Error while connecting to DB")
