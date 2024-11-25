@@ -11,7 +11,7 @@ app.use(express.json())
 /*
 Create an Admin user if not present already at the beginning
 */
-mongoose.connect(dbConfig.url)
+mongoose.connect(process.env.MONGO_URI)
 const db  = mongoose.connection
 db.on("error",()=>{
     console.log("Error while connecting to DB")
@@ -54,6 +54,7 @@ async function init(){
 require("./routes/auth.route.js")(app)
 require("./routes/category.route.js")(app)
 //START THE SERVER
-app.listen(server_config.PORT,()=>{
-    console.log("Server is started on port: ",server_config.PORT);
+const PORT = process.env.PORT
+app.listen(PORT,()=>{
+    console.log("Server is started on port: ",PORT);
 })

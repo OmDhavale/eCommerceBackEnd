@@ -1,4 +1,4 @@
 // This file will contain the server configurations
 module.exports = {
-    PORT : 4444
+    PORT : process.env.PORT
 }
