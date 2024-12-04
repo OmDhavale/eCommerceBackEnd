@@ -20,8 +20,15 @@ require('dotenv').config();
 //     }, // Allowed headers
 // }));
 //
+const corsOptions = {
+    origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+  
+  app.use(cors(corsOptions));
 // Allow all origins
-app.use(cors());
+
 
 /*
 Create an Admin user if not present already at the beginning
