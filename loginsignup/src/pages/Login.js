@@ -32,17 +32,20 @@ function Login() {
       axios.post('https://ecommercebackend-8lcw.onrender.com/signin',{userID,password})
       .then(result=>{
         console.log(result);
-        toast.success("Login succesful !",{
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
+        
         if(result.data==="Success"){
-          navigate('/home')
+          toast.success("Login succesful !",{
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          })
+          setTimeout(() => {
+            navigate('/home')
+          }, 5000);
         }
       })
       .catch(err=>{
@@ -85,6 +88,7 @@ function Login() {
               />
               <button type='submit'onClick={handleSubmit}>LogIn</button>
               <p>Not a member ?<a href='#'> Sign up</a> </p>
+              <ToastContainer/>
           </div>
       </div>
       </div>
