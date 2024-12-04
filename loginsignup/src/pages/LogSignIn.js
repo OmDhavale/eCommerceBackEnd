@@ -69,7 +69,7 @@ function LogSignIn() {
           console.log(signupInfo)
           // try{
           
-            axios.post('http://localhost:4444/signup',{name,userID,email,password,userType}) //type here "keys" as mentioned in API one capslock can also result into error, also sequence must be same !
+            axios.post('https://ecommercebackend-8lcw.onrender.com/signup',{name,userID,email,password,userType}) //type here "keys" as mentioned in API one capslock can also result into error, also sequence must be same !
             .then(result=>{
               console.log(result)
               //for pop up showing success !
