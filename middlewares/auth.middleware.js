@@ -59,6 +59,10 @@ const verifySignInBody = (req,res,next)=>{
             message : "Password not provided !"
         })
     }
+    //updatedd this else line
+    else{
+        return res.json("Success")
+    }
     next()
 }
 

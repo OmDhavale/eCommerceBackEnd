@@ -4,29 +4,12 @@ import {useState} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 //import { Link } from 'react-router-dom'
 //import { handleError, handleSuccess } from './util';
 
 function LogSignIn() {
-    const [isLogin,setIsLogin]=useState(true);
-
-  //for Login
-  const[loginInfo,setLoginInfo] = useState({
-    userid: '',
-    password: ''
-  })
-
-  const handleChange = (e)=>{
-    const {name,value} = e.target;
-    console.log(name,value)
-    const copyLoginInfo = {...loginInfo}
-    copyLoginInfo[name] = value
-    setLoginInfo(copyLoginInfo)
-
-  }
-  //console.log('loginInfo->',loginInfo)
-
-
+  const navigate = useNavigate();
   //for signup
   const[signupInfo,setsignupInfo] = useState({
     name:'',
@@ -70,10 +53,11 @@ function LogSignIn() {
           // try{
           
             axios.post('https://ecommercebackend-8lcw.onrender.com/signup',{name,userID,email,password,userType}) //type here "keys" as mentioned in API one capslock can also result into error, also sequence must be same !
+            //axios.post('http://localhost:4444/signup',{name,userID,email,password,userType}) //for local running
             .then(result=>{
               console.log(result)
               //for pop up showing success !
-              toast.success("User Created",{
+              toast.success("Account Created, redirecting to Login page",{
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -82,6 +66,10 @@ function LogSignIn() {
                 draggable: true,
                 progress: undefined,
               })
+              setTimeout(() => {
+                navigate('/login')
+              }, 5000);
+              
             })
             .catch(err=>{
               console.log(err.response.data)
@@ -96,69 +84,16 @@ function LogSignIn() {
               progress: undefined,
               });
             })
-          //   const url = "http://localhost:4444/ecomm/api/v1/auth/signup"
-          //   const response = await fetch(url,{
-          //     method: "POST",
-          //     headers: {
-          //       'Content-Type': 'application/json'
-          //   },
-          //     body: JSON.stringify(signupInfo) 
-          //   })
-          //   const result = await response.json()
-          //   console.log(result)
-          // //for pop up showing success !
-          //   toast.success("User Created",{
-          //     position: "top-right",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //   })
-          // }
-          // catch(err){
-          //   toast.error("ERROR SENDING POST REQ.", {
-          //     position: "top-right",
-          //     autoClose: 5000,
-          //     hideProgressBar: false,
-          //     closeOnClick: true,
-          //     pauseOnHover: true,
-          //     draggable: true,
-          //     progress: undefined,
-          //     });
-          //     console.log(err)
-          //   }
+          
   }
   return (
     
     <div className ='container'>
       <div className ='form-container'>
-        <div className ='form-toggle'>
-          <button className={isLogin ? 'active' : ""} onClick={()=>setIsLogin(true)}>Login</button>
-          <button className={!isLogin ? 'active' : ""}onClick={()=>setIsLogin(false)}>SignUp</button>
-        </div>
-        {isLogin ? <>
-        {/* Code for login page */}
-          <div className='form'>
-            <h2>Login Form</h2>
-              <input 
-                type='name'
-                name='nameInput'
-                placeholder='Username'
-                onChange={handleChange}
-              />
-              <input 
-                type='password'
-                placeholder='Password'
-                onChange={handleChange}
-              />
-              <p>Not a member ?<a href='#'onClick={()=>setIsLogin(false)}> Sign up</a> </p>
-          </div>
-        </>:<>
+        
           {/*Code for SignUp page  */}
           <div className='form'>
-          <h2>SignUp Form</h2>
+          <h2>Create an Account</h2>
           <form >
             <input 
                 type='name'
@@ -222,9 +157,10 @@ function LogSignIn() {
               
             </form>
             <button type='submit'onClick={handleSignUp}>SignUp</button>
+            <p>Already have an account ?<a href='#'> LogIn</a> </p>
           <ToastContainer/>    
           </div>
-        </>}
+        {/* </>} */}
         </div>
     </div>
     
