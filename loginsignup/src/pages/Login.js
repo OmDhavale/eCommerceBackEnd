@@ -84,7 +84,7 @@ function Login() {
                 value={loginInfo.password}
               />
               <button type='submit'onClick={handleSubmit}>LogIn</button>
-              <p>Not a member ?<a href='#' onClick={navigate('/signup')}> Sign up</a> </p>
+              <p>Not a member ?<a href='#'> Sign up</a> </p>
           </div>
       </div>
       </div>
