@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Login() {
 
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ function Login() {
                 value={loginInfo.password}
               />
               <button type='submit'onClick={handleSubmit}>LogIn</button>
-              <p>Not a member ?<a href='#'> Sign up</a> </p>
+              <p>Not a member ?<Link to="/signup"> Sign up</Link> </p>
               <ToastContainer/>
           </div>
       </div>
