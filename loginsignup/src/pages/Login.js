@@ -29,7 +29,7 @@ function Login() {
       const userID = loginInfo.userID;
       const password = loginInfo.password;
       //axios.post('http://localhost:4444/signin',{userID,password})
-      axios.post('https://ecommercebackend-8lcw.onrender.com/login',{userID,password})
+      axios.post('https://ecommercebackend-8lcw.onrender.com/signin',{userID,password})
       .then(result=>{
         console.log(result);
         toast.success("Login succesful !",{
