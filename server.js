@@ -26,8 +26,8 @@ app.use(cors());
 /*
 Create an Admin user if not present already at the beginning
 */
-//mongoose.connect(process.env.MONGODB_URI) // for hoisting
-mongoose.connect("mongodb://localhost/eCommProjectdb")
+mongoose.connect(process.env.MONGODB_URI) // for hoisting
+//mongoose.connect("mongodb://localhost/eCommProjectdb")
 const db  = mongoose.connection
 db.on("error",()=>{
     console.log("Error while connecting to DB")
@@ -70,8 +70,8 @@ async function init(){
 require("./routes/auth.route.js")(app)
 require("./routes/category.route.js")(app)
 //START THE SERVER
-//const PORT = process.env.PORT  //for hoisting
-const PORT = 4444; 
+const PORT = process.env.PORT  //for hoisting
+//const PORT = 4444; 
 app.listen(PORT,()=>{
     console.log("Server is started on port: ",PORT);
 })
