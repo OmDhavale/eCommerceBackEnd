@@ -6,13 +6,28 @@ const server_config = require("./config/server.config.js")
 const dbConfig = require("./config/db.config.js");
 const userModel = require("./models/user.model.js");
 const bcrypt = require("bcryptjs");
+const cors = require('cors');
+
 app.use(express.json())
 require('dotenv').config();
+
+// //frontend integration
+// app.use(cors({
+//     origin: 'http://localhost:3000', // Replace with your front-end origin
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+//     allowedHeaders: {
+//         'Content-Type': 'application/json'
+//     }, // Allowed headers
+// }));
+//
+// Allow all origins
+app.use(cors());
 
 /*
 Create an Admin user if not present already at the beginning
 */
-mongoose.connect(process.env.MONGODB_URI)
+//mongoose.connect(process.env.MONGODB_URI) // for hoisting
+mongoose.connect("mongodb://localhost/eCommProjectdb")
 const db  = mongoose.connection
 db.on("error",()=>{
     console.log("Error while connecting to DB")
@@ -55,7 +70,8 @@ async function init(){
 require("./routes/auth.route.js")(app)
 require("./routes/category.route.js")(app)
 //START THE SERVER
-const PORT = process.env.PORT
+//const PORT = process.env.PORT  //for hoisting
+const PORT = 4444; 
 app.listen(PORT,()=>{
     console.log("Server is started on port: ",PORT);
 })

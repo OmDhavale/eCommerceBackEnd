@@ -5,7 +5,7 @@ const authMiddleware = require("../middlewares/auth.middleware")
 const authController = require("../controllers/auth.controller")
 module.exports = (app)=>{
     //Route for Sign Up
-    app.post("/ecomm/api/v1/auth/signup",[authMiddleware.verifySignUpBody],authController.signup) 
+    app.post("/signup",[authMiddleware.verifySignUpBody],authController.signup) 
     /**
      * if route enconters this ^ URI, then it makes a Post call at auth.controller and 
      * tells signup to take place
@@ -14,5 +14,5 @@ module.exports = (app)=>{
      */
 
     //Route for Sign In
-    app.post("/ecomm/api/v1/auth/signin",[authMiddleware.verifySignInBody],authController.signin)
+    app.post("/signin",[authMiddleware.verifySignInBody],authController.signin)
 }

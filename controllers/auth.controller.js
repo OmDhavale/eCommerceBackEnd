@@ -71,7 +71,7 @@ exports.signin = async (req,res)=>{
     //Using json web token(jwt) we will create the access token with given ttl(time to live) and return
    
     const token = jwt.sign({id : user.userID},secret.secretString,{     
-        expiresIn : 120 //120 seconds = 2 mins
+        expiresIn : 600 //120 seconds = 2 mins
     })
     /**
      * for creating a token we need to give 3 fields: 
