@@ -5,7 +5,7 @@ function Home() {
   const [categdata,setdata] = useState([
     { name: "Electronics", image: "https://tse1.mm.bing.net/th?id=OIG3.0bwtcjaDguDKveUfgV6I&pid=ImgGn" },
     { name: "Mens wear", image: "https://tse3.mm.bing.net/th?id=OIG1.IXbRk.6px7Qa7CnZ4Xps&pid=ImgGn" },
-    { name: "Household", image: "https://tse4.mm.bing.net/th?id=OIG3.J9OJwDLGhNYya4bmd0Eb&pid=ImgGn" },
+    { name: "Household items", image: "https://tse4.mm.bing.net/th?id=OIG3.J9OJwDLGhNYya4bmd0Eb&pid=ImgGn" },
   ]);
 
   useEffect(()=>{
