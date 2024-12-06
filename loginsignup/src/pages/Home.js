@@ -3,9 +3,9 @@ import axios from 'axios'
 import {useState} from 'react'
 function Home() {
   const [categdata,setdata] = useState([
-    { name: "Electronics", image: "https://www.india.com/wp-content/uploads/2024/07/Designer-27.jpeg" },
-    { name: "Mens wear", image: "https://myfz.in/wp-content/uploads/2023/05/2-Mens-Wear-Banner-Fashion-Zone.jpg" },
-    { name: "Household", image: "https://4.imimg.com/data4/UU/UU/GLADMIN-/img-household-products-household-2.jpg" },
+    { name: "Electronics", image: "https://tse1.mm.bing.net/th?id=OIG3.0bwtcjaDguDKveUfgV6I&pid=ImgGn" },
+    { name: "Mens wear", image: "https://tse3.mm.bing.net/th?id=OIG1.IXbRk.6px7Qa7CnZ4Xps&pid=ImgGn" },
+    { name: "Household", image: "https://tse4.mm.bing.net/th?id=OIG3.J9OJwDLGhNYya4bmd0Eb&pid=ImgGn" },
   ]);
 
   useEffect(()=>{
