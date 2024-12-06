@@ -34,7 +34,7 @@ function Login() {
       .then(result=>{
         console.log(result);
         
-        if(result.data==="Success"){
+        if(result.data.message==="User logged in succesful !"){
           toast.success("Login succesful !",{
             position: "top-right",
             autoClose: 5000,

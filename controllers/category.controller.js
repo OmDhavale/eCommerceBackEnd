@@ -34,3 +34,20 @@ exports.createNewCategory= async (req,res)=>{
         })
     }
 }
+
+exports.findAllCategory = async (req,resp)=>{
+    let data = await categoryModel.find();
+    resp.status(200).send(data);
+}
+
+exports.deleteOneCategory = async (req,resp)=>{
+    console.log(req.params)
+    let data = await categoryModel.deleteOne(req.params)
+     
+    if(data.deletedCount>0){
+        resp.status(200).send(data) 
+    }
+    else{
+        resp.status(500).send("Nothing Deleted")
+    }
+}

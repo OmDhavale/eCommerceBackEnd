@@ -28,7 +28,7 @@ const corsOptions = {
   };
   
   app.use(cors(corsOptions));
-//// Allow all origins
+// Allow all origins
 //app.use(cors());
 
 /*
