@@ -10,7 +10,7 @@ const cors = require('cors');
 
 app.use(express.json())
 require('dotenv').config();
-
+//sniceniwepowefrwfggrg
 // //frontend integration
 // app.use(cors({
 //     origin: 'http://localhost:3000', // Replace with your front-end origin
