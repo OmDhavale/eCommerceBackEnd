@@ -21,8 +21,8 @@ require('dotenv').config();
 // }));
 //
 const corsOptions = {
-    origin: 'http://localhost:3000',    ////for running locally
-    //origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL for deployment
+    //origin: 'http://localhost:3000',    ////for running locally
+    origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL for deployment
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'],
   };
@@ -34,8 +34,8 @@ const corsOptions = {
 /*
 Create an Admin user if not present already at the beginning
 */
-//mongoose.connect(process.env.MONGODB_URI) // for hoisting
-mongoose.connect("mongodb://localhost/eCommProjectdb") //for local running
+mongoose.connect(process.env.MONGODB_URI) // for hoisting
+//mongoose.connect("mongodb://localhost/eCommProjectdb") //for local running
 const db  = mongoose.connection
 db.on("error",()=>{
     console.log("Error while connecting to DB")
@@ -78,8 +78,8 @@ async function init(){
 require("./routes/auth.route.js")(app)
 require("./routes/category.route.js")(app)
 //START THE SERVER
-//const PORT = process.env.PORT  //for hoisting
-const PORT = 4444; //for local running
+const PORT = process.env.PORT  //for hoisting
+//const PORT = 4444; //for local running
 app.listen(PORT,()=>{
     console.log("Server is started on port: ",PORT);
 })
