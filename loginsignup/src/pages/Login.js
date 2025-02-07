@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+const api = require("./apis/apis")
 function Login() {
 
   const navigate = useNavigate();
@@ -29,8 +31,8 @@ function Login() {
       console.log(loginInfo)
       const userID = loginInfo.userID;
       const password = loginInfo.password;
-      //axios.post('http://localhost:4444/signin',{userID,password})
-      axios.post('https://ecommercebackend-8lcw.onrender.com/signin',{userID,password})
+      axios.post(api.signInAPI,{userID,password})
+      //axios.post('https://ecommercebackend-8lcw.onrender.com/signin',{userID,password})
       .then(result=>{
         console.log(result);
         

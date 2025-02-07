@@ -1,6 +1,8 @@
 import React,{ useEffect } from 'react'
 import axios from 'axios'
 import {useState} from 'react'
+const apis = require("./apis/apis")
+
 function Home() {
   const [categdata,setdata] = useState([
     { name: "Electronics", image: "https://tse1.mm.bing.net/th?id=OIG3.0bwtcjaDguDKveUfgV6I&pid=ImgGn" },
@@ -9,7 +11,7 @@ function Home() {
   ]);
 
   useEffect(()=>{
-    axios.get("https://ecommercebackend-8lcw.onrender.com/get/categories")//for deploying
+    axios.get(apis.getCategporyAPI)//for deploying
     //axios.get("http://localhost:4444/get/categories")
     .then((resp)=>{
       console.log(resp)

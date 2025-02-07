@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 //import { handleError, handleSuccess } from './util';
-
+const apis = require("./apis/apis")
 function LogSignIn() {
   const navigate = useNavigate();
   //for signup
@@ -52,7 +52,7 @@ function LogSignIn() {
           console.log(signupInfo)
           // try{
           
-            axios.post('https://ecommercebackend-8lcw.onrender.com/signup',{name,userID,email,password,userType}) //type here "keys" as mentioned in API one capslock can also result into error, also sequence must be same !
+            axios.post(apis.signUpAPI,{name,userID,email,password,userType}) //type here "keys" as mentioned in API one capslock can also result into error, also sequence must be same !
             //axios.post('http://localhost:4444/signup',{name,userID,email,password,userType}) //for local running
             .then(result=>{
               console.log(result)
