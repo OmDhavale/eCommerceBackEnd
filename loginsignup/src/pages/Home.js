@@ -5,9 +5,9 @@ const apis = require("./apis/apis")
 
 function Home() {
   const [categdata,setdata] = useState([
-    { name: "Electronics", image: "https://tse1.mm.bing.net/th?id=OIG3.0bwtcjaDguDKveUfgV6I&pid=ImgGn" },
-    { name: "Mens wear", image: "https://tse3.mm.bing.net/th?id=OIG1.IXbRk.6px7Qa7CnZ4Xps&pid=ImgGn" },
-    { name: "Household items", image: "https://tse4.mm.bing.net/th?id=OIG3.J9OJwDLGhNYya4bmd0Eb&pid=ImgGn" },
+    // { name: "Electronics", image: "https://tse1.mm.bing.net/th?id=OIG3.0bwtcjaDguDKveUfgV6I&pid=ImgGn" },
+    // { name: "Mens wear", image: "https://tse3.mm.bing.net/th?id=OIG1.IXbRk.6px7Qa7CnZ4Xps&pid=ImgGn" },
+    // { name: "Household items", image: "https://tse4.mm.bing.net/th?id=OIG3.J9OJwDLGhNYya4bmd0Eb&pid=ImgGn" },
   ]);
 
   useEffect(()=>{
@@ -28,16 +28,14 @@ function Home() {
     <div style={styles.container}>
       <h1>Home Page</h1>
       <div style={styles.grid}>
-        {categdata.map((data, index) => (
-          <div key={index} style={styles.card}>
+        <div style={styles.card}>
             <img 
               src={data.image} 
               alt={data.name} 
-              style={styles.image} 
+              style={data.image} 
             />
             <div style={styles.name}>{data.name}</div>
           </div>
-        ))}
       </div>
     </div>
 

@@ -13,7 +13,8 @@ const categorySchema = new mongoose.Schema({
         type : String,
         required : true,
         unique : true
-    }
+    },
+    image : {String}
 },{timestamps: true, versionKey:false})
 
 module.exports = mongoose.model("category",categorySchema)

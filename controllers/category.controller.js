@@ -16,7 +16,8 @@ exports.createNewCategory= async (req,res)=>{
     //create category object
     const categoryObj = {
         name : requestbody.name,
-        description : requestbody.description
+        description : requestbody.description,
+        image : requestbody.image
     }
     //insert in MongoDB
     try{
