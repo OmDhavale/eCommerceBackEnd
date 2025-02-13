@@ -20,9 +20,9 @@ function App() {
           {/* <Route path='/' element={<Navigate to="/login"/>}/> */}
           {/* <Route path='/signup' element={<LogSignIn/>}/> */}
           <Route path='/signup' element={authUser ? <Navigate to='/home'/>:<LogSignIn/>}/>
-          <Route path='/home' element={authUser ? <Home/> : <Navigate to="/login"/>}/>
+          <Route path='/home' element={authUser ? <Home/> : <Navigate to="/"/>}/>
           {/* <Route path='/login' element={<Login/>}/> */}
-          <Route path='/login' element={authUser ? <Navigate to='/home'/>:<Login/>}/>
+          <Route path='/' element={authUser ? <Navigate to='/home'/>:<Login/>}/>
         </Routes>
     </div>
   );
