@@ -11,7 +11,7 @@ import LogSignIn from './pages/LogSignIn';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import { useAuthContext } from './AuthContext';
-
+//changes from lab-204
 function App() {
   const {authUser} = useAuthContext()
   return (
