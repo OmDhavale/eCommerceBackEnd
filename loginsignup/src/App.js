@@ -10,15 +10,19 @@ import LogSignIn from './pages/LogSignIn';
 //import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import { useAuthContext } from './AuthContext';
 
 function App() {
+  const {authUser} = useAuthContext()
   return (
     <div className ="App">
        <Routes>
-          <Route path='/' element={<Navigate to="/login"/>}/>
-          <Route path='/signup' element={<LogSignIn/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/login' element={<Login/>}/>
+          {/* <Route path='/' element={<Navigate to="/login"/>}/> */}
+          {/* <Route path='/signup' element={<LogSignIn/>}/> */}
+          <Route path='/signup' element={authUser ? <Navigate to='/home'/>:<LogSignIn/>}/>
+          <Route path='/home' element={authUser ? <Home/> : <Navigate to="/login"/>}/>
+          {/* <Route path='/login' element={<Login/>}/> */}
+          <Route path='/login' element={authUser ? <Navigate to='/home'/>:<Login/>}/>
         </Routes>
     </div>
   );

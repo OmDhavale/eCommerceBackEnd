@@ -7,17 +7,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../AuthContext';
 
 const api = require("./apis/apis")
 function Login() {
-
+  const {authUser,setAuthUser} = useAuthContext()
   const navigate = useNavigate();
     //for Login
     const[loginInfo,setLoginInfo] = useState({
       userID: '',
       password: ''
     })
-  
+    
+    
     const handleChange = (e)=>{
       const {name,value} = e.target;
       console.log(name,value)
@@ -46,9 +48,15 @@ function Login() {
             draggable: true,
             progress: undefined,
           })
-          setTimeout(() => {
-            navigate('/home')
-          }, 5000);
+          // setTimeout(() => {
+          //   navigate('/home')
+          // }, 5000);
+          localStorage.setItem(
+            "chat-user",
+            JSON.stringify({ userID, password })
+          );
+
+          setAuthUser({ userID, password });
         }
       })
       .catch(err=>{
