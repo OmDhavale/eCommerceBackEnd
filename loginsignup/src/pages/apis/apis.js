@@ -6,3 +6,4 @@ export const signInAPI = "https://ecommercebackend-8lcw.onrender.com/signin";
 
 //export const getCategporyAPI = "http://localhost:4444/get/categories";
 export const getCategporyAPI = "https://ecommercebackend-8lcw.onrender.com/get/categories";
+
