@@ -15,4 +15,6 @@ module.exports = (app)=>{
 
     //Route for Sign In
     app.post("/signin",[authMiddleware.verifySignInBody],authController.signin)
+    //lOGOUT ROUTE
+    app.post("/logout", authController.logout);
 }

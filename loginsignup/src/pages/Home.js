@@ -1,6 +1,7 @@
 import React,{ useEffect } from 'react'
 import axios from 'axios'
 import {useState} from 'react'
+import { useAuthContext } from '../AuthContext';
 const apis = require("./apis/apis")
 
 function Home() {
@@ -18,6 +19,24 @@ function Home() {
       setdata(resp.data)
     })
   },{})
+
+  const { setAuthUser } = useAuthContext();
+  //const [loading,setloading] = useState(false)
+  const logout = async()=>{
+    
+      axios.post(apis.logoutAPI)
+      .then((result) => {
+              //loading = true
+              console.log(result);
+              if (result.data.message === "Logged out succesful") {
+                localStorage.removeItem("chat-user")
+                setAuthUser(null)
+              }
+            })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+    }
   return (
     // <div>
     //   <h1>Home Page</h1>
@@ -39,6 +58,7 @@ function Home() {
           </div>
         ))}
       </div>
+        <button onClick={logout}>LOG-OUT</button>
     </div>
 
 

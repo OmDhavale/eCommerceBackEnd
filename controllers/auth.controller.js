@@ -92,3 +92,14 @@ exports.signin = async (req,res)=>{
         accessToken : token
     })
 }
+/**
+ * LOGOUT CONTROLLER
+ */
+exports.logout = async(req,res)=>{
+    try {
+      res.cookie("jwt","",{maxAge: 0})
+      res.status(200).json({message:"Logged out succesful"})
+    } catch (error) {
+      console.log("Error logging out")
+    }
+  }

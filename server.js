@@ -21,8 +21,8 @@ require('dotenv').config();
 // }));
 //
 const corsOptions = {
-    //origin: 'http://localhost:3000',    ////for running locally
-    origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL for deployment
+    origin: 'http://localhost:3000',    ////for running locally
+    //origin: 'https://ecommercefrontend-1.onrender.com', // Your frontend's URL for deployment
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'],
   };
@@ -78,8 +78,8 @@ async function init(){
 require("./routes/auth.route.js")(app)
 require("./routes/category.route.js")(app)
 //START THE SERVER
-const PORT = process.env.PORT  //for hoisting
-//const PORT = 4444; //for local running
+//const PORT = process.env.PORT  //for hoisting
+const PORT = 4444; //for local running
 app.listen(PORT,()=>{
     console.log("Server is started on port: ",PORT);
 })
